@@ -8,7 +8,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended" // Adicione esta linha (última)
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -21,10 +22,12 @@
   "plugins": [
     "react",
     "@typescript-eslint",
-    "prettier" // Adicione esta linha
+    "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error" // Habilita a regra do Prettier via ESLint
+    "semi": ["error", "never"],
+    "prettier/prettier": "error",
+    "quotes": ["error", "single"]
   },
   "settings": {
     "react": {
