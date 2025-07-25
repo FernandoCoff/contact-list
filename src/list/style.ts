@@ -16,11 +16,21 @@ export const List = styled.div`
   }
 
   ul{
+    width: 100%;
+    max-height: 89%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
-    width: 100%;
-    height: 89%;
     overflow-y: scroll;
+    padding-bottom: 25px;
+    padding-right: 25px;
+
+    &::-webkit-scrollbar{
+      background: transparent;
+    }
+  }
+
+  li{
+    list-style: none;
   }
 `

@@ -5,12 +5,14 @@ import { darken } from 'polished'
 export const Card = styled.div`
   width: 100%;
   height: 10rem;
-  background: ${color.bg};
+  background: #ffffff;
   padding: 12.5px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   gap: 6.25px;
+  position: relative;
+  box-shadow: 5px 5px 10px rgba(0,0,0,.2);
 
   header{
     display: flex;

@@ -1,22 +1,32 @@
 import * as S from './style'
+import { useDispatch } from 'react-redux'
+import { removeCard } from '../store/reducers/list'
 
-const Card = () => {
+type Props = {
+  name : string,
+  email : string,
+  number : string,
+  website : string,
+  adress : string,
+  id: number
+}
+
+const Card = ({ name, email, number, website, adress, id} : Props) => {
+  const dispatch = useDispatch()
+
   return(
-    <li>
       <S.Card>
         <header>
-            <h4>Ricardo Moreira Gomes</h4>
+            <h4>{name}</h4>
             <div>
-              <button className='red'>Excuir</button>
-              <button>Editar</button>
+              <button className='red' onClick={()=>{dispatch(removeCard(id))}}>Excuir</button>
             </div>
         </header>
-        <p>ricomoreira14@gmail.com</p>
-        <p>(31) 9 7504-0414</p>
-        <a href="#" target='_blank'>https://Meusite.com.br</a>
-        <p>Rua Radialista 44, Contagem - MG</p>
+        <p>{email}</p>
+        <p>{number}</p>
+        <a href={website} target='_blank'>{website}</a>
+        <p>{adress}</p>
       </S.Card>
-    </li>
   )
 }
 
