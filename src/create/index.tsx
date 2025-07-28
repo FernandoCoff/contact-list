@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCard } from '../store/reducers/list'
+import { addCard, editCard } from '../store/reducers/list'
 import * as S from './style'
 import type { RootReducer } from '../store'
 
@@ -37,10 +37,19 @@ const Create = () => {
   }
 
   const edit = () =>{
-    
+    items.forEach(card => {
+      if(number === card.number){
+        const {name, email, adress, id, website} = card
+        setName(name)
+        setEmail(email)
+        setAdress(adress)
+        setWebsite(website)
+        setId(id)
+      }
+    })
   }
 
-edit()
+useEffect(edit, [number])
 
   return(
     <S.Create>
@@ -67,7 +76,22 @@ edit()
           <input type="text" placeholder='Endereço' id='adress' value={adress} onChange={({target})=> setAdress(target.value) }/>
         </div>
         <div className='btn'>
-          <button onClick={(e)=>{ e.preventDefault();add()}} >Salvar</button>
+          <button onClick={(e)=>{
+            e.preventDefault()
+            const cardExistente = items.find(card => card.number === number);
+            if (cardExistente) {
+              dispatch(editCard({
+                id: cardExistente.id,
+                card: { name, email, number, website, adress, id: cardExistente.id }
+              }))
+              setName('')
+              setEmail('')
+              setNumber('')
+              setWebsite('')
+              setAdress('')
+            } else {
+              add()
+            }}} >Salvar</button>
           <button onClick={(e)=>{e.preventDefault(); cancell()}} className='red'>Cancelar</button>
         </div>
       </form>

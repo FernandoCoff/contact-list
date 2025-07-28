@@ -5,10 +5,13 @@ import Create from './create'
 import List from './list'
 
 
-const App = ()=> (
-  <Provider store={store}>
+const App = ()=>{
+  return(
+    <Provider store={store}>
     <Container childrenOne={<Create/>} childrenTwo={<List/>} />
-  </Provider>
-)
+    </Provider>
+  )
+}
+
 
 export default App
